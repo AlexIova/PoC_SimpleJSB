@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Non mi interessa di questi primi tag -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>PoC ricezione ws browser</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Qui sto importando index.js per usarlo dentro script -->
+    <!-- Defer mi dice che aspetto il completo caricamento dell'html per importare il js -->
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <input type="text" id="messageInput">
+    <button onclick="start()">Send</button>
+    <div id="daInserire"></div>
+</body>
+</html>
