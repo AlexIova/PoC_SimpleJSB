@@ -1,5 +1,6 @@
 package com.esempio.backWS;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -17,8 +18,19 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         // Chiamato quando c'è un nuovo messaggio ricevuto dal cliente
         String payload = message.getPayload();
-        System.out.println("Received message from client: " + payload);
-        session.sendMessage(new TextMessage("Ciao, ho ricevuto il tuo messaggio! " + payload));
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        MessaggioComm msgComm = objectMapper.readValue(payload, MessaggioComm.class);
+
+        System.out.println(msgComm.toString());
+
+        MessaggioComm msgReply  = new MessaggioComm();
+        msgReply.setID(12);
+        msgReply.setProvenienza("JavaBack");
+        msgReply.setContenuto("Ciao mondo!");
+
+        session.sendMessage(new TextMessage(objectMapper.writeValueAsString(msgReply)));
+
     }
 
     @Override

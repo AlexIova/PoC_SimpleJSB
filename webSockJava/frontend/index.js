@@ -5,15 +5,17 @@ async function start() {
     const ws = await connectToServer(); 
 
     msgObj = {
+        "provenienza": "browser",
+        "id": 42,
         "contenuto": msgToSend
     }
 
     ws.send(JSON.stringify(msgObj));
 
     ws.onmessage = (WebSocketMessage) => {
-        console.log(WebSocketMessage);
+        console.log(WebSocketMessage.data);
         const messageBody = JSON.parse(WebSocketMessage.data);
-        insertDiv(messageBody.msg);
+        insertDiv(JSON.stringify(messageBody));
     }    
 
 }
