@@ -1,0 +1,22 @@
+<!-- Ho copiato ed incollato così come era perché non avevo minimamente voglia di scrivere io tutto a mano -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-dark my-5">
+        <div class="card-body">
+          <h2 class="card-title text-center text-white py-3">{{ title }}</h2>     <!-- Ti ricordi? Nella classe Component in app.component.ts avevamo una variabile title, cambiando il valore di questo! -->
+          <ul class="text-center list-inline py-3">
+            <li class="list-inline-item">
+              <a routerLink="/users" class="btn btn-info">List Users</a>    <!-- Farà una richiesta a quello che c'è nel routerlink. Mostrandolo poi qui -->
+                </li>
+            <li class="list-inline-item">
+              <a routerLink="/adduser" class="btn btn-info">Add User</a>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
