@@ -36,6 +36,13 @@
             onSuccess: function () {
                 console.log("CONNECTION SUCCESS");
                 client.subscribe('/topic/penna', {qos: 1});
+                client.send('/topic/quaderno', 'Ciao sono il browser!',0, false , function (error) {
+                    if (error) {
+                        console.log(error)
+                    } else {
+                        console.log('Published')
+                    }
+                });
             },
 
             onFailure: function (message) {
